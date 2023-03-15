@@ -1,4 +1,14 @@
-export function fizzbuzz(input: number) {
+export function fizzbuzz(renderer: (input: number) => string, limit: number) {
+    let result = ''
+
+    for (let i = 0; i < limit; i++) {
+        result += renderer(i + 1)
+    }
+
+    return result
+}
+
+export function render(input: number) {
     let result = ''
 
     if (input % 3 === 0) {
@@ -9,5 +19,5 @@ export function fizzbuzz(input: number) {
         result += 'Buzz'
     }
 
-    return result || input
+    return result || input.toString(10)
 }
