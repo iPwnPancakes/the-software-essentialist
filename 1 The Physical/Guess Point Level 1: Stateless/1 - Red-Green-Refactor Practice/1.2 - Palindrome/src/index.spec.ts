@@ -4,4 +4,8 @@ describe('palindrome checker', () => {
     it('should return true for mom', () => {
         expect(isPalindrome('mom'))
     })
+
+    it('should return true for wow', () => {
+        expect(isPalindrome('wow'))
+    })
 })
