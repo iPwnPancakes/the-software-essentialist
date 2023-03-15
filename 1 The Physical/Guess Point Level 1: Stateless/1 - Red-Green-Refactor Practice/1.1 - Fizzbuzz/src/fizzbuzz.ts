@@ -1,4 +1,4 @@
-export function fizzbuzz(renderer: (input: number) => string, limit: number) {
+export function fizzbuzz(renderer: (input: number) => string, limit: number = 100) {
     let result = ''
 
     for (let i = 0; i < limit; i++) {

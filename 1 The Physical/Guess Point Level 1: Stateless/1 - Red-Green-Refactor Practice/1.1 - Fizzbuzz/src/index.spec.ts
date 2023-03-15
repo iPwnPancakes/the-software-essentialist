@@ -10,6 +10,13 @@ describe("fizzbuzz", () => {
         expect(renderer).toHaveBeenNthCalledWith(2, 2)
     })
 
+    it('should render 100 times by default', () => {
+        const renderer = jest.fn()
+        fizzbuzz(renderer)
+
+        expect(renderer).toHaveBeenCalledTimes(100)
+    })
+
     it('should return the rendered result', () => {
         const renderer = jest.fn().mockReturnValue('1')
         expect(fizzbuzz(renderer, 1)).toBe('1')
