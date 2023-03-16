@@ -1,16 +1,16 @@
 export function isPalindrome (input: string): boolean {
-    const inputCharacters = getAllCharacters(input)
-    const reversedCharacters = reverse(inputCharacters)
+    const preparedInput = prepareInput(input)
 
-    return reversedCharacters.join('') === inputCharacters.join('')
+    return preparedInput === reverse(preparedInput)
 }
 
-function getAllCharacters (input: string): string[] {
+function prepareInput (input: string): string {
     return Array.from(input)
         .filter((char) => char.trim().length > 0)
         .map((char) => char.toLowerCase())
+        .join('')
 }
 
-function reverse(inputCharacters: string[]) {
-    return Array.from(inputCharacters).reverse();
+function reverse(input: string) {
+    return Array.from(input).reverse().join('');
 }
