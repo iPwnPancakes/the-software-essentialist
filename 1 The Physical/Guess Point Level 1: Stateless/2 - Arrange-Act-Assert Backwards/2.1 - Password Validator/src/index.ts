@@ -25,7 +25,7 @@ export function validatePassword(password: string): PasswordValidationResult {
     }
 }
 
-interface PasswordValidator {
+export interface PasswordValidator {
     validate(password: string): string | undefined;
 }
 

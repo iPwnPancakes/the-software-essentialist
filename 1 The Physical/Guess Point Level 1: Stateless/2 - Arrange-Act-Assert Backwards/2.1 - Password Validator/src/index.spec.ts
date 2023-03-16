@@ -1,4 +1,5 @@
-import {LengthIsBetweenValidator, validatePassword} from "./index";
+import {LengthIsBetweenValidator, PasswordValidator, validatePassword} from "./index";
+import exp = require("constants");
 
 describe('password validator', () => {
     it('should see an empty password as invalid', () => {
@@ -11,6 +12,31 @@ describe('password validator', () => {
         const result = validatePassword('');
 
         expect(result.errors).toStrictEqual(['Password must be between 5 and 15 characters long'])
+    })
+
+    it('should return the errors of all validators combined', () => {
+        const validators: PasswordValidator[] = [
+            {
+                validate(password: string): string | undefined {
+                    return 'Password is too short'
+                }
+            },
+            {
+                validate(password: string): string | undefined {
+                    return 'Password is not strong enough'
+                }
+            }
+        ]
+
+        const result = validatePassword('', validators);
+
+        expect(result).toStrictEqual({
+            valid: false,
+            errors: [
+                'Password is too short',
+                'Password is not strong enough'
+            ]
+        })
     })
 })
 
