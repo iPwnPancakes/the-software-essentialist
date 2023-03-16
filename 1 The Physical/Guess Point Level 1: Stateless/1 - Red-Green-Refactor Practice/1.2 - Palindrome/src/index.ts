@@ -1,10 +1,10 @@
 export function isPalindrome (input: string): boolean {
-    const preparedInput = prepareInput(input)
+    const lowercaseCharacters = allLowercaseCharacters(input)
 
-    return preparedInput === reverse(preparedInput)
+    return lowercaseCharacters === reverse(lowercaseCharacters)
 }
 
-function prepareInput (input: string): string {
+function allLowercaseCharacters (input: string): string {
     return Array.from(input)
         .filter((char) => char.trim().length > 0)
         .map((char) => char.toLowerCase())
