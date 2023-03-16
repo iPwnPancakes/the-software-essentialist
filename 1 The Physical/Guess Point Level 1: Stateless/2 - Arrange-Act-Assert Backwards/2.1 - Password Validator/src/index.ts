@@ -36,6 +36,9 @@ export class LengthIsBetweenValidator implements PasswordValidator {
 
 export class AtLeastOneDigitValidator implements PasswordValidator {
     validate(password: string): string | undefined {
+        if (/\d/.test(password)) {
+            return
+        }
         return "Password must contain at least one digit";
     }
 }

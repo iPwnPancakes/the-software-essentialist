@@ -71,5 +71,11 @@ describe('AtLeastOneDigitValidator', () => {
 
         expect(validator.validate('test')).toStrictEqual('Password must contain at least one digit')
     })
+
+    it('should not return errors when given a password with 1 digit', () => {
+        const validator = new AtLeastOneDigitValidator()
+
+        expect(validator.validate('1')).toStrictEqual(undefined)
+    })
 })
 
