@@ -91,3 +91,10 @@ describe('AtLeastOneDigitValidator', () => {
     })
 })
 
+describe('AtLeastOneUppercaseLetter', () => {
+    it('should return the correct error when given a password that does not have any uppercase letters', () => {
+        const validator = new AtLeastOneUppercaseLetter()
+
+        expect(validator.validate('test')).toStrictEqual('Password must contain at least one uppercase letter')
+    })
+});
