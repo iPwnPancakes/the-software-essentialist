@@ -62,31 +62,21 @@ describe('LengthIsBetweenValidator', () => {
         expect(validator.validate('')).toStrictEqual('Password must be between 5 and 15 characters long')
     })
 
-    it('should not return errors giving an input with the correct length', () => {
-        const validator = new LengthIsBetweenValidator({
-            minLength: 1,
-            maxLength: 3
-        })
+    const betweenOneAndThreeValidator = () => (new LengthIsBetweenValidator({
+        minLength: 1,
+        maxLength: 3
+    }))
 
-        expect(validator.validate('12')).toStrictEqual(undefined)
+    it('should not return errors giving an input with the correct length', () => {
+        expect(betweenOneAndThreeValidator().validate('12')).toStrictEqual(undefined)
     })
 
     it('should not return errors for an input with the exact minimum length', () => {
-        const validator = new LengthIsBetweenValidator({
-            minLength: 1,
-            maxLength: 3
-        })
-
-        expect(validator.validate('1')).toStrictEqual(undefined)
+        expect(betweenOneAndThreeValidator().validate('1')).toStrictEqual(undefined)
     })
 
     it('should not return errors for an input with the exact maximum length', () => {
-        const validator = new LengthIsBetweenValidator({
-            minLength: 1,
-            maxLength: 3
-        })
-
-        expect(validator.validate('123')).toStrictEqual(undefined)
+        expect(betweenOneAndThreeValidator().validate('123')).toStrictEqual(undefined)
     })
 })
 
