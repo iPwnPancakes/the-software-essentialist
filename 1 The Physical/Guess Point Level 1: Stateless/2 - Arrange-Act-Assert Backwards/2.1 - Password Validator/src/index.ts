@@ -6,9 +6,10 @@ interface PasswordValidationResult {
 export function validatePassword (password: string): PasswordValidationResult {
     const errors = []
 
-    if (password.length < 5) {
+    if (!isBetween(5, 15, password)) {
         errors.push('Password must be between 5 and 15 characters long')
     }
+
     return {
         valid: errors.length === 0,
         errors: errors
