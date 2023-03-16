@@ -1,4 +1,4 @@
-import {LengthIsBetweenValidator, PasswordValidator, validatePassword} from "./index";
+import {AtLeastOneDigitValidator, LengthIsBetweenValidator, PasswordValidator, validatePassword} from "./index";
 
 describe('password validator', () => {
     it('should return the errors of all validators combined', () => {

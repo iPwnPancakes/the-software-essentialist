@@ -33,3 +33,9 @@ export class LengthIsBetweenValidator implements PasswordValidator {
         return `Password must be between ${this.constraint.minLength} and ${this.constraint.maxLength} characters long`
     }
 }
+
+export class AtLeastOneDigitValidator implements PasswordValidator {
+    validate(password: string): string | undefined {
+        return "Password must contain at least one digit";
+    }
+}
