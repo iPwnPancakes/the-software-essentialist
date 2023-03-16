@@ -6,5 +6,11 @@ describe('password validator', () => {
 
         expect(result.valid).toBe(false)
     })
+
+    it('should return an error indicating the expected password length given an empty password', () => {
+        const result = validatePassword('');
+
+        expect(result.errors).toStrictEqual(['Password must be between 5 and 15 characters long'])
+    })
 })
 
