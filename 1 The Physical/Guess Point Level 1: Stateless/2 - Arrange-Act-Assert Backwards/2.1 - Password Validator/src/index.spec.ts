@@ -1,4 +1,10 @@
-import {AtLeastOneDigitValidator, LengthIsBetweenValidator, PasswordValidator, validatePassword} from "./index";
+import {
+    AtLeastOneDigitValidator,
+    AtLeastOneUppercaseLetterValidator,
+    LengthIsBetweenValidator,
+    PasswordValidator,
+    validatePassword
+} from "./index";
 
 describe('password validator', () => {
     it('should return the errors of all validators combined', () => {
@@ -93,7 +99,7 @@ describe('AtLeastOneDigitValidator', () => {
 
 describe('AtLeastOneUppercaseLetter', () => {
     it('should return the correct error when given a password that does not have any uppercase letters', () => {
-        const validator = new AtLeastOneUppercaseLetter()
+        const validator = new AtLeastOneUppercaseLetterValidator()
 
         expect(validator.validate('test')).toStrictEqual('Password must contain at least one uppercase letter')
     })
