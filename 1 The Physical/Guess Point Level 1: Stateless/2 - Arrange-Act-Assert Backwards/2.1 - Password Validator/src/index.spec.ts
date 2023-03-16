@@ -18,5 +18,9 @@ describe('isBetween validator', () => {
     it('should return false given a too short string', () => {
         expect(isBetween(5, 15, '')).toBe(false)
     })
+
+    it('should return true for an input with the correct length', () => {
+        expect(isBetween(1, 3, '12')).toBe(true)
+    })
 })
 
