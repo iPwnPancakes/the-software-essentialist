@@ -1,4 +1,4 @@
-import {isBetween, validatePassword} from "./index";
+import {LengthIsBetweenValidator, validatePassword} from "./index";
 
 describe('password validator', () => {
     it('should see an empty password as invalid', () => {
@@ -14,21 +14,41 @@ describe('password validator', () => {
     })
 })
 
-describe('isBetween validator', () => {
-    it('should return false given a too short string', () => {
-        expect(isBetween(5, 15, '')).toBe(false)
+describe('LengthIsBetweenValidator', () => {
+    it('should return the error given a password that is too short', () => {
+        const validator = new LengthIsBetweenValidator({
+            minLength: 5,
+            maxLength: 15
+        })
+
+        expect(validator.validate('')).toStrictEqual('Password must be between 5 and 15 characters long')
     })
 
-    it('should return true for an input with the correct length', () => {
-        expect(isBetween(1, 3, '12')).toBe(true)
+    it('should pass giving an input with the correct length', () => {
+        const validator = new LengthIsBetweenValidator({
+            minLength: 1,
+            maxLength: 3
+        })
+
+        expect(validator.validate('12')).toStrictEqual(undefined)
     })
 
     it('should return true for an input with the exact minimum length', () => {
-        expect(isBetween(1, 3, '1')).toBe(true)
+        const validator = new LengthIsBetweenValidator({
+            minLength: 1,
+            maxLength: 3
+        })
+
+        expect(validator.validate('1')).toStrictEqual(undefined)
     })
 
     it('should return true for an input with the exact maximum length', () => {
-        expect(isBetween(1, 2, '12')).toBe(true)
+        const validator = new LengthIsBetweenValidator({
+            minLength: 1,
+            maxLength: 3
+        })
+
+        expect(validator.validate('123')).toStrictEqual(undefined)
     })
 })
 

@@ -3,11 +3,20 @@ interface PasswordValidationResult {
     errors: string[]
 }
 
-export function validatePassword (password: string): PasswordValidationResult {
-    const errors = []
+export function validatePassword(password: string): PasswordValidationResult {
+    const validators = [
+        new LengthIsBetweenValidator({
+            minLength: 5,
+            maxLength: 15
+        })
+    ]
 
-    if (!isBetween(5, 15, password)) {
-        errors.push('Password must be between 5 and 15 characters long')
+    const errors = []
+    for (const validator of validators) {
+        const error = validator.validate(password)
+        if (error) {
+            errors.push(error)
+        }
     }
 
     return {
@@ -16,6 +25,18 @@ export function validatePassword (password: string): PasswordValidationResult {
     }
 }
 
-export function isBetween (minLength: number, maxLength: number, input: string): boolean {
-    return input.length >= minLength && input.length <= maxLength
+interface PasswordValidator {
+    validate(password: string): string | undefined;
+}
+
+export class LengthIsBetweenValidator implements PasswordValidator {
+    constructor(private readonly constraint: { minLength: number, maxLength: number }) {
+    }
+
+    validate(password: string) {
+        if (password.length >= this.constraint.minLength && password.length <= this.constraint.maxLength) {
+            return;
+        }
+        return `Password must be between ${this.constraint.minLength} and ${this.constraint.maxLength} characters long`
+    }
 }
