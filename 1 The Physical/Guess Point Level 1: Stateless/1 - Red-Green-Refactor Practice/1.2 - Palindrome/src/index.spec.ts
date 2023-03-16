@@ -13,7 +13,11 @@ describe('palindrome checker', () => {
         expect(isPalindrome('WoW')).toBe(true)
     })
 
-    it('should return true for test', () => {
-        expect(isPalindrome('test')).toBe(false)
+    it('should return false for bill', () => {
+        expect(isPalindrome('bill')).toBe(false)
+    })
+
+    it('should return true for Was It A Rat I Saw', () => {
+        expect(isPalindrome('Was It A Rat I Saw')).toBe(true)
     })
 })
