@@ -8,7 +8,7 @@ describe('palindrome checker', () => {
         'Was It A Rat I Saw'
     ]
 
-    it.each(palindromes)('should return true for palindrome "%i"', (palindrome) => {
+    it.each(palindromes)('should return true for palindrome "%s"', (palindrome) => {
         expect(isPalindrome(palindrome)).toBe(true)
     })
 
