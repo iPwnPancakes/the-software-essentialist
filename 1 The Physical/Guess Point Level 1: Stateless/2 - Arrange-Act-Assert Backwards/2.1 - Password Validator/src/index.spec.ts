@@ -117,21 +117,17 @@ describe('AtLeastOneDigitValidator', () => {
 })
 
 describe('AtLeastOneUppercaseLetter', () => {
-    it('should return the correct error when given a password that does not have any uppercase letters', () => {
-        const validator = new AtLeastOneUppercaseLetterValidator()
+    const newValidator = () => (new AtLeastOneUppercaseLetterValidator())
 
-        expect(validator.validate('test')).toStrictEqual('Password must contain at least one uppercase letter')
+    it('should return the correct error when given a password that does not have any uppercase letters', () => {
+        expect(newValidator().validate('test')).toStrictEqual('Password must contain at least one uppercase letter')
     })
 
     it('should not return errors when the password has 1 uppercase letter', () => {
-        const validator = new AtLeastOneUppercaseLetterValidator()
-
-        expect(validator.validate('Test')).toStrictEqual(undefined)
+        expect(newValidator().validate('Test')).toStrictEqual(undefined)
     })
 
     it('should not return errors when the password has 2 uppercase letters', () => {
-        const validator = new AtLeastOneUppercaseLetterValidator()
-
-        expect(validator.validate('TeSt')).toStrictEqual(undefined)
+        expect(newValidator().validate('TeSt')).toStrictEqual(undefined)
     })
 });
