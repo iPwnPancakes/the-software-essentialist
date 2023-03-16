@@ -1,4 +1,4 @@
-import {validatePassword} from "./index";
+import {isBetween, validatePassword} from "./index";
 
 describe('password validator', () => {
     it('should see an empty password as invalid', () => {

@@ -14,3 +14,7 @@ export function validatePassword (password: string): PasswordValidationResult {
         errors: errors
     }
 }
+
+export function isBetween (minLength: number, maxLength: number, input: string): boolean {
+    return false
+}
