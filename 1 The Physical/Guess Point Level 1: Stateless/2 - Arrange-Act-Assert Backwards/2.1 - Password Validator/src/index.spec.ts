@@ -83,5 +83,11 @@ describe('AtLeastOneDigitValidator', () => {
 
         expect(validator.validate('12')).toStrictEqual(undefined)
     })
+
+    it('should not return errors when given a password with more than 1 digits and other characters', () => {
+        const validator = new AtLeastOneDigitValidator()
+
+        expect(validator.validate('test12')).toStrictEqual(undefined)
+    })
 })
 
