@@ -109,4 +109,10 @@ describe('AtLeastOneUppercaseLetter', () => {
 
         expect(validator.validate('Test')).toStrictEqual(undefined)
     })
+
+    it('should not return errors when the password has 2 uppercase letters', () => {
+        const validator = new AtLeastOneUppercaseLetterValidator()
+
+        expect(validator.validate('TeSt')).toStrictEqual(undefined)
+    })
 });
