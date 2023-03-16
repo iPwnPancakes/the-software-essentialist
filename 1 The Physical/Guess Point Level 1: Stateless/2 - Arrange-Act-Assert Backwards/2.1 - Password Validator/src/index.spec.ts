@@ -6,7 +6,7 @@ import {
     validatePassword
 } from "./index";
 
-describe('password validator', () => {
+describe('DefaultPasswordValidator', () => {
     it('should return the errors of all validators combined', () => {
         const validators: PasswordValidator[] = [
             {
@@ -21,7 +21,8 @@ describe('password validator', () => {
             }
         ]
 
-        const result = validatePassword('', validators);
+        const defaultValidator = new DefaultPasswordValidator(validators)
+        const result = defaultValidator.validate('')
 
         expect(result).toStrictEqual({
             valid: false,
