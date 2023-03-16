@@ -91,28 +91,22 @@ describe('LengthIsBetweenValidator', () => {
 })
 
 describe('AtLeastOneDigitValidator', () => {
-    it('should return the correct error when given a password that does not have digits', () => {
-        const validator = new AtLeastOneDigitValidator()
+    const newValidator = () => (new AtLeastOneDigitValidator())
 
-        expect(validator.validate('test')).toStrictEqual('Password must contain at least one digit')
+    it('should return the correct error when given a password that does not have digits', () => {
+        expect(newValidator().validate('test')).toStrictEqual('Password must contain at least one digit')
     })
 
     it('should not return errors when given a password with 1 digit', () => {
-        const validator = new AtLeastOneDigitValidator()
-
-        expect(validator.validate('1')).toStrictEqual(undefined)
+        expect(newValidator().validate('1')).toStrictEqual(undefined)
     })
 
     it('should not return errors when given a password with more than 1 digits', () => {
-        const validator = new AtLeastOneDigitValidator()
-
-        expect(validator.validate('12')).toStrictEqual(undefined)
+        expect(newValidator().validate('12')).toStrictEqual(undefined)
     })
 
     it('should not return errors when given a password with more than 1 digits and other characters', () => {
-        const validator = new AtLeastOneDigitValidator()
-
-        expect(validator.validate('test12')).toStrictEqual(undefined)
+        expect(newValidator().validate('test12')).toStrictEqual(undefined)
     })
 })
 
