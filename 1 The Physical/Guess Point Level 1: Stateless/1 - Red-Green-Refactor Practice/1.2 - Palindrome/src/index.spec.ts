@@ -9,6 +9,10 @@ describe('palindrome checker', () => {
         expect(isPalindrome('wow')).toBe(true)
     })
 
+    it('should return true for WoW', () => {
+        expect(isPalindrome('WoW')).toBe(true)
+    })
+
     it('should return true for test', () => {
         expect(isPalindrome('test')).toBe(false)
     })
