@@ -1,9 +1,9 @@
 import {
     AtLeastOneDigitValidator,
     AtLeastOneUppercaseLetterValidator,
+    DefaultPasswordValidator,
     LengthIsBetweenValidator,
-    PasswordValidator,
-    validatePassword
+    PasswordValidator
 } from "./index";
 
 describe('DefaultPasswordValidator', () => {
@@ -42,7 +42,8 @@ describe('DefaultPasswordValidator', () => {
             }
         ]
 
-        const result = validatePassword('', validators);
+        const defaultValidator = new DefaultPasswordValidator(validators)
+        const result = defaultValidator.validate('pass')
 
         expect(result).toStrictEqual({
             valid: true,

@@ -3,23 +3,28 @@ interface PasswordValidationResult {
     errors: string[]
 }
 
-export function validatePassword(password: string, validators: PasswordValidator[]): PasswordValidationResult {
-    const errors = []
-    for (const validator of validators) {
-        const error = validator.validate(password)
-        if (error) {
-            errors.push(error)
-        }
-    }
-
-    return {
-        valid: errors.length === 0,
-        errors: errors
-    }
-}
-
 export interface PasswordValidator {
     validate(password: string): string | undefined;
+}
+
+export class DefaultPasswordValidator {
+    constructor(private readonly validators: PasswordValidator[]) {
+    }
+
+    validate(password: string): PasswordValidationResult {
+        const errors = []
+        for (const validator of this.validators) {
+            const error = validator.validate(password)
+            if (error) {
+                errors.push(error)
+            }
+        }
+
+        return {
+            valid: errors.length === 0,
+            errors: errors
+        }
+    }
 }
 
 export class LengthIsBetweenValidator implements PasswordValidator {
