@@ -3,14 +3,7 @@ interface PasswordValidationResult {
     errors: string[]
 }
 
-export function validatePassword(password: string): PasswordValidationResult {
-    const validators = [
-        new LengthIsBetweenValidator({
-            minLength: 5,
-            maxLength: 15
-        })
-    ]
-
+export function validatePassword(password: string, validators: PasswordValidator[]): PasswordValidationResult {
     const errors = []
     for (const validator of validators) {
         const error = validator.validate(password)
