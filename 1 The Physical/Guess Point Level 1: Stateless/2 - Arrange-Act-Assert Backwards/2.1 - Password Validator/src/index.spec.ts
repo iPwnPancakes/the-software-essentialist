@@ -31,6 +31,23 @@ describe('password validator', () => {
             ]
         })
     })
+
+    it('should return valid when all validators pass', () => {
+        const validators: PasswordValidator[] = [
+            {
+                validate(): string | undefined {
+                    return undefined
+                }
+            }
+        ]
+
+        const result = validatePassword('', validators);
+
+        expect(result).toStrictEqual({
+            valid: true,
+            errors: []
+        })
+    })
 })
 
 describe('LengthIsBetweenValidator', () => {
