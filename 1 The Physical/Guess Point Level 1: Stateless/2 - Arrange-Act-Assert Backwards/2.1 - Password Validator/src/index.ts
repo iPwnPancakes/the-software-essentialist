@@ -16,5 +16,5 @@ export function validatePassword (password: string): PasswordValidationResult {
 }
 
 export function isBetween (minLength: number, maxLength: number, input: string): boolean {
-    return input.length > minLength && input.length < maxLength
+    return input.length >= minLength && input.length < maxLength
 }
