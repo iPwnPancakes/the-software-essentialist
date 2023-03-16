@@ -65,3 +65,11 @@ describe('LengthIsBetweenValidator', () => {
     })
 })
 
+describe('AtLeastOneDigitValidator', () => {
+    it('should return the correct error when given a password that does not have digits', () => {
+        const validator = new AtLeastOneDigitValidator()
+
+        expect(validator.validate('test')).toStrictEqual('Password must contain at least one digit')
+    })
+})
+
