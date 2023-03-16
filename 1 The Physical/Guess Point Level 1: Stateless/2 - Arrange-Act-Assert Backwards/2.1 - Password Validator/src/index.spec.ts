@@ -26,5 +26,9 @@ describe('isBetween validator', () => {
     it('should return true for an input with the exact minimum length', () => {
         expect(isBetween(1, 3, '1')).toBe(true)
     })
+
+    it('should return true for an input with the exact maximum length', () => {
+        expect(isBetween(1, 2, '12')).toBe(true)
+    })
 })
 
