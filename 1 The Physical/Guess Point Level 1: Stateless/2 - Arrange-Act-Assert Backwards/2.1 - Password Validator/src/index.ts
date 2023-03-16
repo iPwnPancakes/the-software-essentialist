@@ -45,6 +45,9 @@ export class AtLeastOneDigitValidator implements PasswordValidator {
 
 export class AtLeastOneUppercaseLetterValidator implements PasswordValidator {
     validate(password: string): string | undefined {
+        if (/[A-Z]/.test(password)) {
+            return
+        }
         return "Password must contain at least one uppercase letter";
     }
 }
